@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 import requests
+from reply_maker import make_reply
 
 # Create your views here.
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
@@ -25,6 +26,7 @@ def callback(request):
     return HttpResponse(reply)
 
 def reply_text(reply_token, text):
+    reply = make_reply(text)
     header = {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + ACCESS_TOKEN
@@ -34,9 +36,9 @@ def reply_text(reply_token, text):
           "messages":[
                 {
                     "type":"text",
-                    "text": text
+                    "text": reply
                 }
             ]
     }
     requests.post(REPLY_ENDPOINT, headers=header, data=json.dumps(payload))
-    return text
+    return reply
