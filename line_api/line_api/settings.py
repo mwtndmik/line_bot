@@ -133,4 +133,4 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'))
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mwtndmik-linebot.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'YOUR SERVER URL']
