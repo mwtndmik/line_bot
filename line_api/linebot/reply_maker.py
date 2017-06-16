@@ -88,6 +88,9 @@ def to_naftlang(bf_code):
     return " ".join(naft_code)
 
 def to_bf(naft_code):
+    naft_code = naft_code.replace("\r"," ")
+    naft_code = naft_code.replace("\n"," ")
+    
     splited_code = naft_code.split(' ')
     bf_code = ""
     # NAFT: Nagoya University Aerospace and Flight Technologies
